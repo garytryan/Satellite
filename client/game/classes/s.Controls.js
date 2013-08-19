@@ -15,12 +15,12 @@ s.Controls = new Class({
 		// Store references to game objects
 		this.game = options.game;
 		this.player = options.player;
-		this.camera = options.camera;
+		//this.camera = options.camera;
 
 		// Create interpreters for controllers
 		this.keyboard = new s.Keyboard();
 
-		// Hook to the gameloop		
+		// Hook to the gameloop
 		this.update = this.update.bind(this);
 		this.game.hook(this.update);
 	},

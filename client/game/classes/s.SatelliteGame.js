@@ -1,7 +1,7 @@
 s.SatelliteGame = new Class({
 	toString: 'SatelliteGame',
 	extend: s.Game,
-	
+
 	// Models that should be loaded
 	models: [
 		'phobos_hifi',
@@ -10,20 +10,20 @@ s.SatelliteGame = new Class({
 	],
 
 	initialize: function(_super) {
-		_super.call(this);
-		
+        _super.call(this);
+
 		// No gravity
 		this.scene.setGravity(new THREE.Vector3(0, 0, 0));
 
 		// Ambient light
 		this.ambientLight = new THREE.AmbientLight(0x382828);
 		this.scene.add(this.ambientLight);
-	
+
 		// Directional light
 		this.light = new THREE.DirectionalLight(0xEEEEEE, 2);
 		this.light.position.set(-100000, 0, 0);
 		this.scene.add(this.light);
-		
+
 		// Add moon
 		this.moon = new s.Moon({
 			game: this
@@ -37,13 +37,20 @@ s.SatelliteGame = new Class({
 			rotation: new THREE.Vector3(0, Math.PI/4, 0)
 		});
 
+        // Add crosshair
+//        this.crosshair = new s.Crosshair({
+//            game: this
+//        });
+
 		// Setup camera: Chase camera
-		this.player.root.add(this.camera);
-		this.camera.position.set(0,0,350); // Odd to stare at the ass of the craft constantly
-		// this.camera.position.set(0,75,350); // Makes flight feel funny
+//		this.player.root.add(this.camera);
+		this.camera.position.x = this.player.root.position.x+500;
+        this.camera.position.y = this.player.root.position.y;
+        this.camera.position.z = this.player.root.position.z+500;
+//		this.camera.position.set(0,75,350); // Makes flight feel funny
 
 		// Planet camera
-		// this.scene.add(this.camera);
+		//this.scene.add(this.camera);
 		// this.camera.position.set(10000,2000,10000);
 
 		// Add skybox

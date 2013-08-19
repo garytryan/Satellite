@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		watch: {	
+		watch: {
 			gruntfile: {
 				files: ['Gruntfile.js'],
 				tasks: ['jshint:gruntfile']
@@ -112,6 +112,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('client-prod', ['client', 'uglify']);
 
 	grunt.registerTask('dev', ['default', 'watch']);
-	
+
 	grunt.registerTask('default', ['server', 'client']);
 };

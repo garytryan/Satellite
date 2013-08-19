@@ -26,7 +26,8 @@ s.Game = new Class({
 		this.renderer.setClearColor(0x87CCEB);
 
 		// Create a camera
-		this.camera = new THREE.PerspectiveCamera(35, 1, 1, 300000);
+//        this.camera = new THREE.OrthographicCamera( -10000, 10000, -10000, 10000, -10000, 10000 );
+        this.camera = new THREE.PerspectiveCamera(35, 1, 1, 300000);
 
 		// Configure shadows
 		this.renderer.shadowMapEnabled = true;
@@ -231,7 +232,37 @@ s.Game = new Class({
 			// Calculate the time since the last frame was rendered
 			var delta = now - this.lastRender;
 			this.lastRender = now;
-            //this.camera.position.z += delta/200;
+
+            // Calculate the ship's current linear velocity and assign new camera positions accordingly
+            var linearVelocity = this.player.root.getLinearVelocity();
+            var angularVelocity = this.player.root.getAngularVelocity();
+
+            var playerPosition = this.player.root.position.clone();
+            var playerRotation = this.player.root.rotation.clone();
+
+
+            if (this.lastLinearVelocity && (this.lastLinearVelocity.x || this.lastLinearVelocity.y || this.lastLinearVelocity.z)){
+
+
+                var crosshairX = this.player.crosshair.matrixWorld.elements[12];
+                var crosshairY = this.player.crosshair.matrixWorld.elements[13];
+                var crosshairZ = this.player.crosshair.matrixWorld.elements[14];
+
+                var differentialX = playerPosition.x - crosshairX;
+                var differentialY = playerPosition.y - crosshairY;
+                var differentialZ = playerPosition.z - crosshairZ;
+
+                //this.camera.position.copy((crosshairX, crosshairY, crosshairZ));
+                //this.camera.rotation = this.player.crosshair.
+                this.camera.position.x = crosshairX + differentialX * 2.0;
+                this.camera.position.y = crosshairY + differentialY * 2.0;
+                this.camera.position.z = crosshairZ + differentialZ * 2.0;
+
+//                this.camera.position.x = this.player.root.position.x + 300;//(linearVelocity.x * angularVelocity.x);
+//                this.camera.position.y = this.player.root.position.y + 10;//(linearVelocity.y * angularVelocity.y);
+//                this.camera.position.z = this.player.root.position.z + 300;//(linearVelocity.z * angularVelocity.z);
+            }
+
 			// Run each hooked function before rendering
 			// This may need to happen BEFORE physics simulation
 			this.hookedFuncs.forEach(function(func) {
@@ -241,6 +272,9 @@ s.Game = new Class({
 			// Re-render the scene
 			this.renderer.render(this.scene, this.camera);
 			this.render_stats.update();
+
+            // update the previous linearVelocity of the player
+            this.lastLinearVelocity = this.player.root.getLinearVelocity();
 
 			// Request the next frame to be rendered
 			requestAnimationFrame(this.render);
