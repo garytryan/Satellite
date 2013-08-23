@@ -17,7 +17,7 @@ s.Ship = new Class({
 		this.root.rotation.copy(options.rotation);
 
 		this.lastTime = 0;
-        this.team = 'alliance';
+        this.alliance = options.alliance;
 	},
 
     // Calculate the position of the bullet

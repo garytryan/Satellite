@@ -11,10 +11,8 @@ s.SatelliteGame = new Class( {
 
 	],
 
-	initialize: function(_super) {
+	initialize: function() {
 		var that = this;
-		_super.call(this);
-		
 
 		// No gravity
 		this.scene.setGravity(new THREE.Vector3(0, 0, 0));
@@ -143,7 +141,7 @@ s.SatelliteGame = new Class( {
                     if ( enemyInfo.name === null ) {
                         console.error( 'Bug: enemyInfo contained null player name' );
                         console.log( enemyInfo );
-                        console.trace( );
+                        console.trace(  );
                     }
                     console.log( '%s has joined the fray', enemyInfo.name );
                 }
@@ -158,6 +156,7 @@ s.SatelliteGame = new Class( {
                 } );
 
                 this._list.push( enemyShip );
+                console.log(this._list);
                 this._map[ enemyInfo.name ] = enemyShip; // this._map.set(enemyInfo.name, otherShip);
             }
         };
@@ -180,6 +179,7 @@ s.SatelliteGame = new Class( {
 
         this.comm.connected( );
 
+        this.start();
     },
 
     render: function ( _super, time ) {
