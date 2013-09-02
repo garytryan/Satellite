@@ -51,10 +51,14 @@ HTML5 audio - To play sounds/music
 # Credits
 
 Satellite was made at [HackReactor] by a team of very talented people:
-[Larry Davis] - Mentor, and code ninja, developed the code base. See [Dune Buggy]
-[Phillip Alexander] - Project leader, grunt master, and server code
-[Felix Tripier] - Game development wizard, server stuff, music and sound fx, HUD
-[Andrew Spade] - Maths wizard, radar, tracking systems, chase camera
+
+[Larry Davis] - Mentor, and code ninja, developed the code base. See [Dune Buggy].
+
+[Phillip Alexander] - Project leader, grunt master, and server code.
+
+[Felix Tripier] - Game development wizard, server stuff, music and sound fx, HUD.
+
+[Andrew Spade] - Maths wizard, radar, tracking systems, chase camera.
 
 [Dune Buggy]: https://github.com/lazd/DuneBuggy
 [Larry Davis]: https://github.com/lazd?source=cc
