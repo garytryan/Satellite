@@ -50,7 +50,7 @@ HTML5 audio - To play sounds/music
 
 # Credits
 
-Satellite was made at [HackReactor] by a team of very talented people:
+Satellite was made at [Hack Reactor] by a team of very talented people:
 
 [Larry Davis] - Mentor, and code ninja, developed the code base. See [Dune Buggy].
 
@@ -60,6 +60,7 @@ Satellite was made at [HackReactor] by a team of very talented people:
 
 [Andrew Spade] - Maths wizard, radar, tracking systems, chase camera.
 
+[Hack Reactor]: http://hackreactor.com/
 [Dune Buggy]: https://github.com/lazd/DuneBuggy
 [Larry Davis]: https://github.com/lazd?source=cc
 [Felix Tripier]: https://github.com/ftripier
